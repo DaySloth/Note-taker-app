@@ -4,6 +4,9 @@ const apiRoutes = require("./routes/apiRoutes");
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 const PORT = process.env.PORT || 4444;
 
 htmlRoutes(app);
