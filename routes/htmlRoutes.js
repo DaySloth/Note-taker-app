@@ -5,7 +5,8 @@ const renderHtml = function(app){
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
 
-    app.get("/notes", function(app){
+    app.get("/notes", function(req, res){
+        console.log("getting '/notes'")
         res.sendFile(path.join(__dirname, "../public/notes.html"));
     });
 };
