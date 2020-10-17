@@ -74,7 +74,7 @@ html, body {
   padding-left: 10px;
 }
 
-@media only screen and (max-width: 370px ){
+@media only screen and (max-width:400px ){
   .note-title {
     height: 20%;
     margin-top: 13px;
