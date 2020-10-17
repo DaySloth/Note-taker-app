@@ -2,6 +2,9 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background: url('https://images.unsplash.com/photo-1520871942340-42898ab9167f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1398&q=80') center center no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .save-note {
@@ -20,6 +23,7 @@ html, body {
   width: 100%;
   outline: none;
   border: none;
+  background-color: #ffffffc5;
 }
 
 .note-textarea {
@@ -46,6 +50,7 @@ html, body {
 }
 
 .list-container {
+  margin-top: 13px;
   padding-left: 0;
   padding-right: 0;
 }
@@ -56,6 +61,7 @@ html, body {
   border-top: none;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
+  background-color: #ffffff80;
 }
 
 .list-container i {
@@ -72,6 +78,10 @@ html, body {
 
 .col-8{
   padding-left: 10px;
+}
+
+.bg-dark {
+  background-color: #ff8800 !important;
 }
 
 @media only screen and (max-width:500px ){
