@@ -1,8 +1,10 @@
 const path = require("path");
 const fs = require("fs");
 const { v4: uuidv4 } = require('uuid');
+const util = require('util');
 
 const dbFilePath = path.join(__dirname, "../db/db.json");
+const fsReadFile = util.promisify(fs.readFile);
 
 const apiRoutes = function(app){
     app.get("/api/notes", function(req, res){
@@ -14,30 +16,48 @@ const apiRoutes = function(app){
 
     app.post("/api/notes", function(req, res){
         const body = req.body;
-        body.uid = uuidv4();
+        body.id = uuidv4();
 
-        fs.appendFile(dbFilePath, body, function(err){
-            if(err){
-                throw err;
-            }
-
-            console.log("Added to 'db.json'")
+        fsReadFile(dbFilePath).then(function(res){
+            let dbJsonArray = JSON.parse(res);
+            dbJsonArray.push(body);
+            
+            fs.writeFile(dbFilePath, JSON.stringify(dbJsonArray, null, 2), function(err){
+                if(err){
+                    throw err;
+                }
+    
+                console.log("Added to 'db.json'")
+            });
         });
 
         res.json(body);
     });
 
-    app.delete("/api/notes/:id", function(req, res){
-        const dbData = fs.readFile(dbFilePath, "utf8", function(err,data){
-            if(err){
-                throw err;
-            }
+    app.delete("/api/notes/:id", function(req, response){
+        const id = req.params.id;
+        console.log(id);
 
-            return data;
+        fsReadFile(dbFilePath).then(function(res){
+            let dbJsonArray = JSON.parse(res);
+            
+            dbJsonArray.forEach(element => {
+                if(id === element.id){
+                    console.log("deleting from array");
+                    dbJsonArray.splice(dbJsonArray.indexOf(element), 1);
+                    response.send("Successfully deleted from file");
+                }
+            });
+            
+            fs.writeFile(dbFilePath, JSON.stringify(dbJsonArray, null, 2), function(err){
+                if(err){
+                    throw err;
+                }
+    
+                console.log("Deleted from and updated 'db.json'")
+            });
         });
-
-        console.log(dbData);
-    })
+    });
 };
 
 module.exports = apiRoutes;
