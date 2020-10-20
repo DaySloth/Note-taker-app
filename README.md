@@ -2,15 +2,17 @@
 
 ![MIT License](https://img.shields.io/badge/License-MIT-green)
 
+[Link to Webpage](https://notetaker-app-001.herokuapp.com/)
+
 ![Image of Application](./img/notetaker-landing.PNG)
 
 ## Description 
 
-This project was built for the user who would like to have a note saving app they can access from anywhere. This uses [NodeJS](https://nodejs.org/en/) to save the users inputs on the webpage to a json file. This app also used ExpressJS to route and send webpages back to the user
+This project was built for the user who would like to have a note saving app they can access from anywhere. This uses [NodeJS](https://nodejs.org/en/) to save the users inputs on the webpage to a json file. This app also used [ExpressJS](https://expressjs.com/) to route and send webpages back to the user
 
 ## Usage
 
-This app is deployed on Heroku so the user can access the webpage at any time. Simply go to the address provided, where you will be greated by a landing page. Click the get started button and you will be taken to the notes page.
+This app is deployed on Heroku so the user can access the webpage at any time. Simply go to the [address provided](https://notetaker-app-001.herokuapp.com/), where you will be greated by a landing page. Click the get started button and you will be taken to the notes page.
 
 ![Image of notes page](./img/notes-page.PNG)
 
